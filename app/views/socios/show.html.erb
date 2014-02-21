@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @socio.nombre %>
+</p>
+
+<p>
+  <strong>Dni:</strong>
+  <%= @socio.dni %>
+</p>
+
+<p>
+  <strong>Domicilio:</strong>
+  <%= @socio.domicilio %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @socio.email %>
+</p>
+
+<p>
+  <strong>Fecha alta:</strong>
+  <%= @socio.fecha_alta %>
+</p>
+
+<p>
+  <strong>Fecha baja:</strong>
+  <%= @socio.fecha_baja %>
+</p>
+
+<p>
+  <strong>Comentario:</strong>
+  <%= @socio.comentario %>
+</p>
+
+<p>
+  <strong>Activo:</strong>
+  <%= @socio.activo %>
+</p>
+
+<%= link_to 'Edit', edit_socio_path(@socio) %> |
+<%= link_to 'Back', socios_path %>

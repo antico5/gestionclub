@@ -1,0 +1,41 @@
+<h1>Listing socios</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Dni</th>
+      <th>Domicilio</th>
+      <th>Email</th>
+      <th>Fecha alta</th>
+      <th>Fecha baja</th>
+      <th>Comentario</th>
+      <th>Activo</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @socios.each do |socio| %>
+      <tr>
+        <td><%= socio.nombre %></td>
+        <td><%= socio.dni %></td>
+        <td><%= socio.domicilio %></td>
+        <td><%= socio.email %></td>
+        <td><%= socio.fecha_alta %></td>
+        <td><%= socio.fecha_baja %></td>
+        <td><%= socio.comentario %></td>
+        <td><%= socio.activo %></td>
+        <td><%= link_to 'Show', socio %></td>
+        <td><%= link_to 'Edit', edit_socio_path(socio) %></td>
+        <td><%= link_to 'Destroy', socio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Socio', new_socio_path %>
