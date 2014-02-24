@@ -11,7 +11,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140221190940) do
+ActiveRecord::Schema.define(version: 20140224135815) do
+
+  create_table "admins", force: true do |t|
+    t.string   "usuario"
+    t.string   "nombre"
+    t.string   "password"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "categoria", force: true do |t|
+    t.string   "nombre"
+    t.integer  "edad_hasta"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "costo_por_categoria", force: true do |t|
+    t.float    "costo"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "deudas", force: true do |t|
+    t.float    "monto"
+    t.boolean  "pagada"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "pagos", force: true do |t|
+    t.float    "monto"
+    t.date     "fecha"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "periodos", force: true do |t|
+    t.string   "nombre"
+    t.date     "fecha_vencimiento"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "socios", force: true do |t|
     t.string   "nombre"
