@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140224135815) do
+ActiveRecord::Schema.define(version: 20140224183951) do
 
   create_table "admins", force: true do |t|
     t.string   "usuario"
@@ -39,7 +39,12 @@ ActiveRecord::Schema.define(version: 20140224135815) do
     t.boolean  "pagada"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "socio_id"
+    t.integer  "periodo_id"
   end
+
+  add_index "deudas", ["periodo_id"], name: "index_deudas_on_periodo_id"
+  add_index "deudas", ["socio_id"], name: "index_deudas_on_socio_id"
 
   create_table "pagos", force: true do |t|
     t.float    "monto"
