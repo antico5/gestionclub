@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140224183951) do
+ActiveRecord::Schema.define(version: 20140224185820) do
 
   create_table "admins", force: true do |t|
     t.string   "usuario"
@@ -51,7 +51,10 @@ ActiveRecord::Schema.define(version: 20140224183951) do
     t.date     "fecha"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "deuda_id"
   end
+
+  add_index "pagos", ["deuda_id"], name: "index_pagos_on_deuda_id"
 
   create_table "periodos", force: true do |t|
     t.string   "nombre"
