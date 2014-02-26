@@ -1,5 +1,15 @@
 require 'spec_helper'
 
 describe Periodo do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "Genera una deuda para todos los socios activos cada vez que se genera un periodo" do
+  	socio = create :socio
+  	periodo = create :periodo
+  	
+  	deudas_del_periodo = periodo.deudas
+  	expect(deudas_del_periodo.count).to_not eq(0)
+  	
+  end
+  
+  
+  
 end
