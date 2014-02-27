@@ -1,44 +1,37 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Socio -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @socio.nombre %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:nombre) %>:</strong></dt>
+  <dd><%= @socio.nombre %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:dni) %>:</strong></dt>
+  <dd><%= @socio.dni %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:domicilio) %>:</strong></dt>
+  <dd><%= @socio.domicilio %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
+  <dd><%= @socio.email %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:fecha_alta) %>:</strong></dt>
+  <dd><%= @socio.fecha_alta %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:fecha_baja) %>:</strong></dt>
+  <dd><%= @socio.fecha_baja %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:comentario) %>:</strong></dt>
+  <dd><%= @socio.comentario %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:activo) %>:</strong></dt>
+  <dd><%= @socio.activo %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:categoria_id) %>:</strong></dt>
+  <dd><%= @socio.categoria_id %></dd>
+</dl>
 
-<p>
-  <strong>Dni:</strong>
-  <%= @socio.dni %>
-</p>
-
-<p>
-  <strong>Domicilio:</strong>
-  <%= @socio.domicilio %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @socio.email %>
-</p>
-
-<p>
-  <strong>Fecha alta:</strong>
-  <%= @socio.fecha_alta %>
-</p>
-
-<p>
-  <strong>Fecha baja:</strong>
-  <%= @socio.fecha_baja %>
-</p>
-
-<p>
-  <strong>Comentario:</strong>
-  <%= @socio.comentario %>
-</p>
-
-<p>
-  <strong>Activo:</strong>
-  <%= @socio.activo %>
-</p>
-
-<%= link_to 'Edit', edit_socio_path(@socio) %> |
-<%= link_to 'Back', socios_path %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              socios_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_socio_path(@socio), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              socio_path(@socio),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

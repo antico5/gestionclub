@@ -1,41 +1,47 @@
-<h1>Listing socios</h1>
-
-<table>
+<%- model_class = Socio -%>
+<%
+def yes_no_icon(bool)
+  if bool
+    "icon-ok"
+  else
+    "icon-remove"
+  end
+end
+%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Nombre</th>
-      <th>Dni</th>
-      <th>Domicilio</th>
-      <th>Email</th>
-      <th>Fecha alta</th>
-      <th>Fecha baja</th>
-      <th>Comentario</th>
-      <th>Activo</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:nombre) %></th>
+      <th><%= model_class.human_attribute_name(:activo) %></th>
+      <th><%= model_class.human_attribute_name(:categoria_id) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @socios.each do |socio| %>
       <tr>
-        <td><%= socio.nombre %></td>
-        <td><%= socio.dni %></td>
-        <td><%= socio.domicilio %></td>
-        <td><%= socio.email %></td>
-        <td><%= socio.fecha_alta %></td>
-        <td><%= socio.fecha_baja %></td>
-        <td><%= socio.comentario %></td>
-        <td><%= socio.activo %></td>
-        <td><%= link_to 'Show', socio %></td>
-        <td><%= link_to 'Edit', edit_socio_path(socio) %></td>
-        <td><%= link_to 'Destroy', socio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= socio.id %></td>
+        <td><%= link_to socio.nombre, socio_path(socio) %></td>
+        <td><i class="<%= yes_no_icon socio.activo %>"> </i></td>
+        <td><%= socio.categoria.nombre %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_socio_path(socio), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      socio_path(socio),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Socio', new_socio_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_socio_path,
+            :class => 'btn btn-primary' %>
