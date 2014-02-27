@@ -15,7 +15,7 @@ class Periodo < ActiveRecord::Base
       monto_deuda = monto_por_categoria(categoria)
       #generar la deuda para el socio
       if monto_deuda != 0
-        deuda = Deuda.create! periodo: self, socio: socio, monto: monto_deuda
+        deuda = Deuda.create periodo: self, socio: socio, monto: monto_deuda
       end
     end
   end
