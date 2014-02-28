@@ -6,7 +6,7 @@ class Periodo < ActiveRecord::Base
   def generar_deuda_a_socios_activos
     #obtener todos los socios activos
     Socio.activos.each do |socio|
-      Deuda.generar self, socio
+      socio.generar_deuda self
     end
   end
   

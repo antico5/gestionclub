@@ -7,24 +7,8 @@ class Deuda < ActiveRecord::Base
   validates_uniqueness_of :socio_id, scope: :periodo_id
   validates_numericality_of :monto, greater_than: 0
   
-  def self.generar(periodo,socio)
-    monto = monto_por_categoria(periodo,socio.categoria)
-    create(periodo: periodo, socio: socio, monto: monto) 
-  end
-  
   def monto_pagado
   	pagos.sum('monto')
-  end
-  
-  #devuelve el monto (float) de la cuota para la categoria pasada como parametro  
-  def self.monto_por_categoria(periodo,categoria)
-    #obtener la instancia de CostoPorCategoria asociada a esa categoria
-    costo_por_categoria = periodo.costo_por_categorias.where(categoria: categoria).first
-    if costo_por_categoria != nil
-      return costo_por_categoria.costo
-    else
-      return 0
-    end
   end
   
 end
