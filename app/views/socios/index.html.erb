@@ -1,13 +1,4 @@
 <%- model_class = Socio -%>
-<%
-def yes_no_icon(bool)
-  if bool
-    "icon-ok"
-  else
-    "icon-remove"
-  end
-end
-%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
@@ -26,7 +17,7 @@ end
       <tr>
         <td><%= socio.id %></td>
         <td><%= link_to socio.nombre, socio_path(socio) %></td>
-        <td><i class="<%= yes_no_icon socio.activo %>"> </i></td>
+        <td><%= yes_no_icon socio.activo %></td>
         <td><%= socio.categoria.nombre %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
