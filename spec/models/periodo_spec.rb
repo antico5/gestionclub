@@ -15,7 +15,7 @@ describe Periodo do
     periodo = create :periodo
   	socio = Socio.create(nombre: "alberto", dni: "23874", categoria: Categoria.first, activo: true)
   	periodo.generar_deuda_a_socios_activos
-  	monto_correcto = periodo.monto_por_categoria(socio.categoria)
+  	monto_correcto = Deuda.monto_por_categoria(periodo, socio.categoria)
   	deuda_generada = socio.deudas.first
   	monto_generado = deuda_generada.monto
   	expect(monto_generado).to eq(monto_correcto)

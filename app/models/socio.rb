@@ -9,6 +9,8 @@ class Socio < ActiveRecord::Base
   validates :nombre, presence: true
   validates :dni, presence: true
   
+  scope :activos, where(activo: true)
+  
   def init
   	activo ||= true #el operador ||= setea un valor al especificado solo si era nil
   end
