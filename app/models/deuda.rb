@@ -5,14 +5,15 @@ class Deuda < ActiveRecord::Base
   has_many :pagos
 
   validates_uniqueness_of :socio_id, scope: :periodo_id
+  validates_numericality_of :monto, greater_than: 0
   
   def self.generar(periodo,socio)
     monto = monto_por_categoria(periodo,socio.categoria)
-    create(periodo: periodo, socio: socio, monto: monto) if monto > 0 
+    create(periodo: periodo, socio: socio, monto: monto) 
   end
   
   def monto_pagado
-  	return pagos.sum('monto')
+  	pagos.sum('monto')
   end
   
   #devuelve el monto (float) de la cuota para la categoria pasada como parametro  
