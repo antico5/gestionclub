@@ -10,7 +10,7 @@ class Socio < ActiveRecord::Base
   validates :nombre, presence: true
   validates :dni, presence: true
   
-  scope :activos, where(activo: true)
+  scope :activos, -> {where(activo: true)}
   
   def generar_deuda periodo
     monto = monto_por_periodo periodo
