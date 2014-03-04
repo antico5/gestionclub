@@ -1,11 +1,18 @@
 Gestionclub::Application.routes.draw do
   devise_for :users
+  
   resources :socios
-  resources :periodos
+  
+  resources :periodos do
+    resources :costo_por_categorias
+  end
+  
   resources :categorias
   
   root 'socios#index'
 
+  get 'periodos/:id/generar_deuda' => 'periodos#generar_deuda', as: :generar_deuda
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
