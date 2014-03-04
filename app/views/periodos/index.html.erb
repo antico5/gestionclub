@@ -8,17 +8,17 @@
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:nombre) %></th>
       <th><%= model_class.human_attribute_name(:fecha_vencimiento) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= "Generado" %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @periodos.each do |periodo| %>
       <tr>
-        <td><%= link_to periodo.id, periodo_path(periodo) %></td>
-        <td><%= periodo.nombre %></td>
+        <td><%= periodo.id %></td>
+        <td><%= link_to periodo.nombre, periodo_path(periodo) %></td>
         <td><%= periodo.fecha_vencimiento %></td>
-        <td><%=l periodo.created_at %></td>
+        <td><%= periodo.created_at.to_date.to_s %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_periodo_path(periodo), :class => 'btn btn-mini' %>
