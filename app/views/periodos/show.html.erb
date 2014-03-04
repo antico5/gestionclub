@@ -7,13 +7,13 @@
   <dt><strong><%= model_class.human_attribute_name(:nombre) %>:</strong></dt>
   <dd><%= @periodo.nombre %></dd>
   <dt><strong><%= model_class.human_attribute_name(:fecha_vencimiento) %>:</strong></dt>
-  <dd><%= @periodo.fecha_vencimiento %></dd>
+  <dd><%= l @periodo.fecha_vencimiento %></dd>
 </dl>
 <br>
 <br>
 <h4> Costos de la cuota </h3>
 
-<table>
+<table class="table" style="width: 300px;">
   <thead>
     <tr>
       <th>Categoria</th>
