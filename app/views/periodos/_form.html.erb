@@ -1,6 +1,10 @@
 <%= simple_form_for @periodo, :html => { :class => 'form-horizontal' } do |f| %>
   <%= f.input :nombre %>
   <%= f.input :fecha_vencimiento %>
+  <%= f.simple_fields_for :costo_por_categorias do |c| %>
+    <%= c.association :categoria, input_html: {disabled: "disabled"} %>
+    <%= c.input :costo %>
+  <% end %>
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
