@@ -9,6 +9,26 @@
   <dt><strong><%= model_class.human_attribute_name(:fecha_vencimiento) %>:</strong></dt>
   <dd><%= @periodo.fecha_vencimiento %></dd>
 </dl>
+<br>
+<br>
+<h4> Costos de la cuota </h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Categoria</th>
+      <th>Costo</th>
+    </th>
+  </thead>
+  <tbody>
+    <% @periodo.costo_por_categorias.each do |costo_por_categoria| %>
+    <tr>
+      <td><%= costo_por_categoria.categoria.nombre %></td>
+      <td><%= costo_por_categoria.costo.to_s + " $" %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
