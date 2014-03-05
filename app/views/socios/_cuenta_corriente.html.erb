@@ -1,0 +1,27 @@
+<div style="width: 600px;padding-top: 50px;padding-bottom: 50px">
+  <hr>
+  <h4> Cuenta del socio </h4>
+  <table class="table stripped">
+    <thead>
+      <tr>
+        <th>Fecha</th>
+        <th>Concepto</th>
+        <th>Debe</th>
+        <th>Haber</th>
+      </th>
+    </thead>
+    <tbody>
+      <% @socio.listar_cuenta_corriente.each do |renglon| %>
+      <tr>
+        <td><%= l renglon.fecha.to_date %></td>
+        <td><%= renglon.concepto %></td>
+        <td><%= renglon.debe %></td>
+        <td><%= renglon.haber %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div style="float: right;padding-right: 100px;font-size: 16px">
+    Saldo: <b> <%= @socio.saldo_cuenta.to_s + " $" %></b>
+  </div>
+</div>

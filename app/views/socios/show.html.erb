@@ -2,7 +2,7 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
-
+<h4> Datos personales </h4>
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:nombre) %>:</strong></dt>
   <dd><%= @socio.nombre %></dd>
@@ -13,16 +13,18 @@
   <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
   <dd><%= @socio.email %></dd>
   <dt><strong><%= model_class.human_attribute_name(:fecha_alta) %>:</strong></dt>
-  <dd><%= @socio.fecha_alta %></dd>
+  <dd><%= l @socio.fecha_alta if @socio.fecha_alta%></dd>
   <dt><strong><%= model_class.human_attribute_name(:fecha_baja) %>:</strong></dt>
-  <dd><%= @socio.fecha_baja %></dd>
+  <dd><%= l @socio.fecha_baja if @socio.fecha_baja %></dd>
   <dt><strong><%= model_class.human_attribute_name(:comentario) %>:</strong></dt>
   <dd><%= @socio.comentario %></dd>
   <dt><strong><%= model_class.human_attribute_name(:activo) %>:</strong></dt>
-  <dd><%= @socio.activo %></dd>
+  <dd><%= yes_no_icon @socio.activo %></dd>
   <dt><strong><%= model_class.human_attribute_name(:categoria_id) %>:</strong></dt>
-  <dd><%= @socio.categoria_id %></dd>
+  <dd><%= @socio.categoria %></dd>
 </dl>
+<%= render partial: "cuenta_corriente" %>
+
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
