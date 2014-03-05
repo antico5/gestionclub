@@ -1,20 +1,19 @@
 require 'spec_helper'
 
 describe Socio do
-  it "Calcula el saldo de su cuenta" do
+
+  before :each do
     periodo = create :periodo
-    socio = Socio.create! nombre: "Juan", dni: "23423", categoria_id: 1
-    deuda = socio.generar_deuda periodo
+    @socio = Socio.create! nombre: "Juan", dni: "23423", categoria: Categoria.first
+    deuda = @socio.generar_deuda periodo
     pago = Pago.create deuda: deuda, monto: 60
-    expect(socio.saldo_cuenta).to eq(40)
+  end
+
+  it "Calcula el saldo de su cuenta" do
+    expect(@socio.saldo_cuenta).to eq(40)
   end
 
   it "Devuelve el listado de su cuenta corriente" do
-    periodo = create :periodo
-    socio = Socio.create! nombre: "Juan", dni: "23423", categoria_id: 1
-    deuda = socio.generar_deuda periodo
-    pago = Pago.create deuda: deuda, monto: 60
-
-    expect(socio.listar_cuenta_corriente.size).to eq(2)
+    expect(@socio.listar_cuenta_corriente.size).to eq(2)
   end
 end
