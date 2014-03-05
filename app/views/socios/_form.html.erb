@@ -3,13 +3,12 @@
   <%= f.input :dni %>
   <%= f.input :domicilio %>
   <%= f.input :email %>
-  <%= f.input :fecha_alta, input_html: {id: "fechaalta"}, as: :string %>
   <%= f.input :comentario %>
-  <%= f.input :activo %>
   <%= f.association :categoria %>
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 socios_path, :class => 'btn' %>
   </div>
+
 <% end %>
