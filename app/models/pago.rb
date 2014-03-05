@@ -4,6 +4,10 @@ class Pago < ActiveRecord::Base
 
   belongs_to :deuda
 
+  def concepto
+    "Pago de " + deuda.concepto
+  end
+
   private
 
     def actualizar_deuda
@@ -12,4 +16,6 @@ class Pago < ActiveRecord::Base
         deuda.save
       end
     end
+
+
 end
