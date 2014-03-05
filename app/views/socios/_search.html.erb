@@ -1,0 +1,8 @@
+<%= search_form_for @q do |f| %>
+  <div class="input-append">
+    <%= f.text_field :nombre_or_dni_cont %>
+    <%= f.button class: "btn" do %>
+      <i class="icon-search"></i>
+    <% end %>
+  </div>
+<% end %>
