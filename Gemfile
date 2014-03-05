@@ -49,6 +49,8 @@ gem 'inherited_resources'
 
 gem 'devise'
 
+gem "ransack", github: "activerecord-hackery/ransack", branch: "rails-4"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
