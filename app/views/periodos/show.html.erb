@@ -31,6 +31,10 @@
 </table>
 
 <div class="form-actions">
+  <%= link_to "Liquidar periodo", generar_deuda_path(@periodo), class: "btn" %>
+</div>
+
+<div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               periodos_path, :class => 'btn'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
