@@ -9,11 +9,31 @@ describe Socio do
     pago = Pago.create deuda: deuda, monto: 60
   end
 
-  it "Calcula el saldo de su cuenta" do
-    expect(@socio.saldo_cuenta).to eq(40)
-  end
+  describe "Calculo de cuenta corriente" do
 
-  it "Devuelve el listado de su cuenta corriente" do
-    expect(@socio.listar_cuenta_corriente.size).to eq(2)
+    it "Calcula el saldo de su cuenta" do
+      expect(@socio.saldo_cuenta).to eq(40)
+    end
+
+    it "tiene un renglon por cada deuda y pago" do
+      expect(@socio.listar_cuenta_corriente.size).to eq(2)
+    end
+
+    it "contiene el monto de las deudas en haber" do
+      expect(@socio.listar_cuenta_corriente[0].haber).to eq(100)
+    end
+
+    it "contiene el monto de los pagos en debe" do
+      expect(@socio.listar_cuenta_corriente[1].debe).to eq(60)
+    end
+
+    it "contiene un concepto para deuda" do
+      expect(@socio.listar_cuenta_corriente[0].concepto).to eq("Cuota: Febrero 2014")
+    end
+
+    it "contiene un concepto para pago" do
+      expect(@socio.listar_cuenta_corriente[1].concepto).to eq("Pago de Cuota: Febrero 2014")
+    end
+
   end
 end
