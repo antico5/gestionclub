@@ -24,23 +24,19 @@ class Socio < ActiveRecord::Base
   end
 
   def saldo_cuenta
-    total_deudas = deudas.sum(:monto)
-    total_pagos = pagos.sum(:monto)
-    total_deudas - total_pagos
+    balance.saldo
   end
 
   def listar_cuenta_corriente
-    listado = []
-    deudas.each do |deuda|
-      listado << RenglonCuenta.new(fecha: deuda.created_at, concepto: deuda.concepto, haber: deuda.monto)
-    end
-    pagos.each do |pago|
-      listado << RenglonCuenta.new(fecha: pago.created_at, concepto: pago.concepto, debe: pago.monto)
-    end
-    listado.sort! {|a,b| a.fecha <=> b.fecha}
-    listado
+    balance.listado
   end
 
   delegate :monto_por_periodo, to: :categoria, prefix: false, allow_nil: true
+
+  private
+
+    def balance
+      @balance ||= Balance.new deudas
+    end
 
 end
