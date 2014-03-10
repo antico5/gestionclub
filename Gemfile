@@ -51,6 +51,8 @@ gem 'devise'
 
 gem "ransack", github: "activerecord-hackery/ransack", branch: "rails-4"
 
+gem "cancan"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
