@@ -1,6 +1,12 @@
 class SociosController < ApplicationController
-  before_action :set_socio, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
+
+  load_and_authorize_resource
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to socios_path, :alert => exception.message
+  end
+
+  before_action :set_socio, only: [:show, :edit, :update, :destroy]
 
   # GET /socios
   # GET /socios.json
