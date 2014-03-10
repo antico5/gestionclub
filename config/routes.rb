@@ -1,4 +1,7 @@
 Gestionclub::Application.routes.draw do
+  get "caja/index"
+  get "caja/cobrar"
+  get "web/redirigir"
   devise_for :users, controllers: { sessions: "users/sessions" }
 
   resources :socios
@@ -9,7 +12,7 @@ Gestionclub::Application.routes.draw do
 
   resources :categorias
 
-  root 'socios#index'
+  root 'web#redirigir'
 
   get 'periodos/:id/generar_deuda' => 'periodos#generar_deuda', as: :generar_deuda
 
