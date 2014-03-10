@@ -28,13 +28,15 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/ryanb/cancan/wiki/Defining-Abilities
+    return if !user
+
     if user.cajero?
-      can :manage, Pagos
+      can :manage, Pago
       can :read, :all
     end
 
     if user.administrador?
-      can :manage, [Socios, Deudas, Categoria, CostoPorCategoria, Periodo]
+      can :manage, [Socio, Deuda, Categoria, CostoPorCategoria, Periodo]
     end
 
   end
