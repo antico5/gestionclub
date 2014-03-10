@@ -45,24 +45,27 @@
             <span class="icon-bar"></span>
           </a>
           <%= link_to "GestionClub", root_path, class: "brand" %>
-          <%= render partial: "navbar_administrador" %>
+          <div class="container-fluid nav-collapse">
+            <ul class="nav">
+            </ul>
+          </div><!--/.nav-collapse -->
         </div>
+      </div>
+    </div>
+    <%= bootstrap_flash %>
+    <div class="container-fluid">
+      <div class="well login-container span4 offset4">
+        <%= yield %>
       </div>
     </div>
 
     <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="span12">
-          <%= bootstrap_flash %>
-          <%= yield %>
-        </div>
-      </div><!--/row-->
-
       <footer>
         <p>&copy; Gestion Club 2014</p>
       </footer>
+    </div>
 
-    </div> <!-- /container -->
+
 
     <!-- Javascripts
     ================================================== -->
