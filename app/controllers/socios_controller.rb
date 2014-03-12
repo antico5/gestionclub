@@ -1,11 +1,13 @@
 class SociosController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :authorize_user!
 
   before_action :set_socio, only: [:show, :edit, :update, :destroy]
 
   # GET /socios
   # GET /socios.json
   def index
+    authorize Socio
     @q = Socio.search(params[:q])
     @socios = @q.result(distinct: true)
   end
@@ -27,7 +29,6 @@ class SociosController < ApplicationController
   # POST /socios
   # POST /socios.json
   def create
-    binding.pry
     @socio = Socio.new(socio_params)
     respond_to do |format|
       if @socio.save
@@ -74,4 +75,9 @@ class SociosController < ApplicationController
     def socio_params
       params.require(:socio).permit(:nombre, :dni, :domicilio, :email, :fecha_alta, :fecha_baja, :comentario, :activo, :categoria_id)
     end
+
+    def authorize_user!
+      authorize Socio
+    end
+
 end

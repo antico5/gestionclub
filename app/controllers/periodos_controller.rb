@@ -1,5 +1,5 @@
 class PeriodosController < InheritedResources::Base
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :authorize_user!
 
 
   def generar_deuda
@@ -16,4 +16,7 @@ class PeriodosController < InheritedResources::Base
       params.permit(:periodo => [:nombre, :fecha_vencimiento, :costo_por_categorias, costo_por_categorias_attributes: [:id, :categoria_id, :costo]])
     end
 
+    def authorize_user!
+      authorize Periodo
+    end
 end

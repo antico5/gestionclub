@@ -1,6 +1,6 @@
 class CajaController < ApplicationController
   layout "caja"
-  before_filter :authenticate_user!, :check_authorization
+  before_filter :authenticate_user!, :authorize_user!
 
   def index
   end
@@ -9,7 +9,7 @@ class CajaController < ApplicationController
   end
 
   private
-    def check_authorization
-      authorize! :manage, Pago
+    def authorize_user!
+      authorize CajaController
     end
 end
