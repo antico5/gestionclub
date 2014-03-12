@@ -1,11 +1,6 @@
 class PeriodosController < InheritedResources::Base
   before_filter :authenticate_user!
 
-  load_and_authorize_resource
-
-  rescue_from CanCan::AccessDenied do |exception|
-    redirect_to periodos_path, :alert => exception.message
-  end
 
   def generar_deuda
     @periodo = Periodo.find params[:id]
