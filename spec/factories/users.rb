@@ -4,5 +4,6 @@ FactoryGirl.define do
   factory :user do
     email "testuser@gmail.com"
     password "testpass"
+    association :rol
   end
 end
