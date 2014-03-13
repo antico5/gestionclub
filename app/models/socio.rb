@@ -1,7 +1,7 @@
 class Socio < ActiveRecord::Base
   include SociosHelper
 
-  before_save :inicializar
+  after_initialize :inicializar
 
   belongs_to :categoria
   has_many :deudas
