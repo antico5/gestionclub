@@ -5,6 +5,7 @@
   <%= f.input :email %>
   <%= f.input :comentario %>
   <%= f.association :categoria %>
+  <%= f.input :activo, as: :boolean, label: false, inline_label: "Activo? " %>
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
