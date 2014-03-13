@@ -19,8 +19,10 @@ class Socio < ActiveRecord::Base
   end
 
   def inicializar
-  	self.activo ||= true #el operador ||= setea un valor al especificado solo si era nil
-  	self.fecha_alta ||= Date.today.to_date
+    if self.new_record?
+  	  self.activo ||= true #el operador ||= setea un valor al especificado solo si era nil
+  	  self.fecha_alta ||= Date.today.to_date
+  	end
   end
 
   def saldo_cuenta
