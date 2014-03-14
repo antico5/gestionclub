@@ -53,6 +53,8 @@ gem "ransack", github: "activerecord-hackery/ransack", branch: "rails-4"
 
 gem "pundit"
 
+gem "slim"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
