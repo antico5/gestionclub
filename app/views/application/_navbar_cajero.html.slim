@@ -1,0 +1,11 @@
+.container-fluid.nav-collapse
+  ul.nav
+    li.dropdown
+      a.dropdown-toggle data-toggle="dropdown" href=""
+        |Cobrar
+        b.caret
+      ul.dropdown-menu role="menu" aria-labelledby="dLabel"
+        li = link_to "Ingresar por deuda", "#"
+        li = link_to "Buscar por socio", caja_cobrar_por_socio_path
+    li
+      =link_to "Salir", destroy_user_session_path, method: :delete
