@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140310142411) do
+ActiveRecord::Schema.define(version: 20140313173016) do
 
   create_table "admins", force: true do |t|
     t.string   "usuario"
@@ -117,6 +117,10 @@ ActiveRecord::Schema.define(version: 20140310142411) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "rol_id"
+    t.datetime "confirmed_at"
+    t.string   "confirmation_token"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
