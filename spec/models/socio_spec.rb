@@ -3,10 +3,10 @@ require 'spec_helper'
 describe Socio do
 
   before :each do
-    periodo = create :periodo
+    @periodo = create :periodo
     @socio = Socio.create! nombre: "Juan", dni: "23423", categoria: Categoria.first
-    deuda = @socio.generar_deuda periodo
-    pago = Pago.create deuda: deuda, monto: 60
+    @deuda = @socio.generar_deuda @periodo
+    pago = Pago.create deuda: @deuda, monto: 60
   end
 
   describe "Calculo de cuenta corriente" do
@@ -35,5 +35,14 @@ describe Socio do
       expect(@socio.listar_cuenta_corriente[1].concepto).to eq("Pago de Cuota: Febrero 2014")
     end
 
+  end
+
+  it "Sabe cuando esta al dia" do
+    expect(@socio.al_dia?).to be_true
+  end
+
+  it "Sabe cuando no esta al dia" do
+    Periodo.any_instance.stub(:fecha_vencimiento) {2.days.ago}
+    expect(@socio.al_dia?).to be_false
   end
 end
