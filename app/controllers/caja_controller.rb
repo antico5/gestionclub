@@ -6,7 +6,8 @@ class CajaController < ApplicationController
   end
 
   def cobrar_por_socio
-    @socios = Socio.activos
+    @q = Socio.search(params[:q])
+    @socios = @q.result.activos
   end
 
   private
