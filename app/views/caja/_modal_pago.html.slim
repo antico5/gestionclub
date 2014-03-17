@@ -1,0 +1,13 @@
+div.modal.hide.fade id=(deuda.id)
+  = form_for @pago, url: pagos_create_path do |f|
+    .modal-header
+      button.close type="button" data-dismiss="modal" aria-hidden="true" X
+      h3 Realizar Pago
+    .modal-body
+      p = "Deuda: " + deuda.concepto
+      = f.text_field :deuda_id, type: "hidden", value: deuda.id
+      = f.label "Ingrese monto"
+      = f.text_field :monto
+    .modal-footer
+      = link_to "Cancelar","#", class: "btn"
+      = f.submit "Aceptar", class: "btn btn-primary"
