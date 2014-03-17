@@ -8,7 +8,7 @@ class SociosController < ApplicationController
   # GET /socios.json
   def index
     @q = Socio.search(params[:q])
-    @socios = @q.result(distinct: true)
+    @socios = @q.result
   end
 
   # GET /socios/1
