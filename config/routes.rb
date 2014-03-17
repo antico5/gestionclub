@@ -1,21 +1,33 @@
 Gestionclub::Application.routes.draw do
+  #pagos
+  post "pagos/create"
+  post "pagos/delete"
+  post "pagos/update"
+
+  #caja
   get "caja/index"
   get "caja/cobrar_por_socio"
+  get "caja/cobrar_a_socio/:socio_id" => "caja#cobrar_a_socio", as: :caja_cobrar_a_socio
 
+  #redireccion basada en el rol de la cuenta
   get "web/redirigir"
+
+  #devise
   devise_for :users, controllers: { sessions: "users/sessions" }
 
+  #socios
   resources :socios
 
-  resources :periodos do
-    resources :costo_por_categorias
-  end
+  #periodos
+  resources :periodos
+  get 'periodos/:id/generar_deuda' => 'periodos#generar_deuda', as: :generar_deuda
 
+  #categorias
   resources :categorias
 
+  #root
   root 'web#redirigir'
 
-  get 'periodos/:id/generar_deuda' => 'periodos#generar_deuda', as: :generar_deuda
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
