@@ -5,7 +5,8 @@ class CajaController < ApplicationController
   def index
   end
 
-  def cobrar
+  def cobrar_por_socio
+    @socios = Socio.activos
   end
 
   private

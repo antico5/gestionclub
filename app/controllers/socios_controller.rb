@@ -7,7 +7,6 @@ class SociosController < ApplicationController
   # GET /socios
   # GET /socios.json
   def index
-    authorize Socio
     @q = Socio.search(params[:q])
     @socios = @q.result(distinct: true)
   end

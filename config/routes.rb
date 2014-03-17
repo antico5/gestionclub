@@ -1,6 +1,7 @@
 Gestionclub::Application.routes.draw do
   get "caja/index"
-  get "caja/cobrar"
+  get "caja/cobrar_por_socio"
+
   get "web/redirigir"
   devise_for :users, controllers: { sessions: "users/sessions" }
 
