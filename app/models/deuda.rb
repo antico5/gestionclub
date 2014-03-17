@@ -10,11 +10,6 @@ class Deuda < ActiveRecord::Base
 
   scope :impagas, -> {where(pagada: false)}
 
-
-  def monto_pagado
-  	pagos.sum('monto')
-  end
-
   def init
     if new_record?
       self.pagada = false
@@ -25,7 +20,20 @@ class Deuda < ActiveRecord::Base
     "Cuota: " + periodo.nombre
   end
 
-  def vencida?
-    periodo.fecha_vencimiento and periodo.fecha_vencimiento <= Date.today
+  def monto_pagado
+  	pagos.sum('monto')
   end
+
+  def monto_pendiente
+    monto - monto_pagado
+  end
+
+  def vencida?
+    fecha_vencimiento and fecha_vencimiento < Date.today
+  end
+
+  def fecha_vencimiento
+    periodo.fecha_vencimiento
+  end
+
 end

@@ -3,6 +3,8 @@ class Rol < ActiveRecord::Base
 
   has_many :users
 
+  validates :nombre, uniqueness: true
+
   def self.new_user_role
     self.obtener :no_asignado
   end
