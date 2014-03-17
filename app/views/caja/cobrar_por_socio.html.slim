@@ -1,2 +1,20 @@
 .page-header
   h1 Cobrar deudas por socio
+
+.container-fluid
+  .span12
+    = render partial: "socios/search", locals: {url: caja_cobrar_por_socio_path}
+    table.table.table-striped
+      thead
+        tr
+          th Nombre
+          th Activo
+          th Al dia
+          th Deuda total
+      tbody
+        - @socios.each do |socio|
+          tr
+            td = link_to socio.nombre, caja_cobrar_a_socio_path(socio.id)
+            td = yes_no_icon socio.activo
+            td = yes_no_icon socio.al_dia?
+            td = socio.saldo_cuenta

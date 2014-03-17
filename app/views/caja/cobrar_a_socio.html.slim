@@ -1,0 +1,24 @@
+- @deudas.each do |deuda|
+  = render partial: "modal_pago", locals: {deuda: deuda}
+
+.page-header
+  h1 Cobro por socio
+
+.container-fluid
+  .span12
+    == "<b>Socio: </b>"+ @socio.nombre
+    hr
+    table.table.table-striped
+      thead
+        tr
+          th Fecha
+          th Concepto
+          th Pendiente
+          th Vencimiento
+      tbody
+        - @deudas.each do |deuda|
+          tr
+            td = formatear_fecha deuda.created_at
+            td = link_to deuda.concepto, "#"+deuda.id.to_s, role: "button", data: {toggle: "modal"}
+            td = deuda.monto_pendiente
+            td = formatear_fecha deuda.fecha_vencimiento

@@ -10,6 +10,12 @@ class CajaController < ApplicationController
     @socios = @q.result.activos
   end
 
+  def cobrar_a_socio
+    @socio = Socio.find params[:socio_id]
+    @deudas = @socio.deudas.impagas
+    @pago = Pago.new
+  end
+
   private
     def authorize_user!
       authorize CajaController
