@@ -33,7 +33,7 @@ class Socio < ActiveRecord::Base
   end
 
   def al_dia?
-     deudas.detect {|deuda| deuda.vencida?} == nil
+     deudas.impagas.detect {|deuda| deuda.vencida?} == nil
   end
 
   delegate :monto_por_periodo, to: :categoria, prefix: false, allow_nil: true
