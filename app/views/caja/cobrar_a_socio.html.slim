@@ -17,7 +17,7 @@
           th Vencimiento
       tbody
         - @deudas.each do |deuda|
-          tr
+          tr class=('error' if deuda.vencida?)
             td = formatear_fecha deuda.created_at
             td = link_to deuda.concepto, "#"+deuda.id.to_s, role: "button", data: {toggle: "modal"}
             td = deuda.monto_pendiente
