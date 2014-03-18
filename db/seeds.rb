@@ -11,4 +11,4 @@ Categoria.create nombre: "Adulto"
 Categoria.create nombre: "Jubilado"
 Categoria.create nombre: "Anexo Grupo Familiar"
 
-Rol::NAMES.each {|rol| Rol.create nombre: rol}
+Rol::NOMBRES.each {|rol| Rol.create nombre: rol}
