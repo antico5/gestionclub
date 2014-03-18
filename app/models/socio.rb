@@ -1,5 +1,4 @@
 class Socio < ActiveRecord::Base
-  include SociosHelper
 
   after_initialize :inicializar
 
