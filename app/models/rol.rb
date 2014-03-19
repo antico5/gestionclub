@@ -22,4 +22,8 @@ class Rol < ActiveRecord::Base
     Rol.find_by(nombre: self.nombre(rol))
   end
 
+  def es? simbolo
+    NOMBRES[simbolo] == nombre
+  end
+
 end

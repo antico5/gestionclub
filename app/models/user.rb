@@ -5,4 +5,8 @@ class User < ActiveRecord::Base
 
   belongs_to :rol
 
+  def tiene_rol? simbolo
+    rol.es? simbolo
+  end
+
 end
