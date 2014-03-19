@@ -31,7 +31,7 @@ class SociosController < ApplicationController
     @socio = Socio.new(socio_params)
     respond_to do |format|
       if @socio.save
-        format.html { redirect_to @socio, notice: 'Socio was successfully created.' }
+        format.html { redirect_to new_socio_path, notice: 'El socio fue creado correctamente.' }
         format.json { render action: 'show', status: :created, location: @socio }
       else
         format.html { render action: 'new' }
