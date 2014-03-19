@@ -19,7 +19,7 @@ require 'spec_helper'
 # that an instance is receiving a specific message.
 
 describe SociosController do
-  
+
   before :each do
     @user = FactoryGirl.create :user
     sign_in @user
@@ -81,7 +81,7 @@ describe SociosController do
 
       it "redirects to the created socio" do
         post :create, {:socio => valid_attributes}, valid_session
-        response.should redirect_to(Socio.last)
+        response.should redirect_to(new_socio_path)
       end
     end
 
