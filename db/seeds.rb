@@ -6,9 +6,13 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Categoria.create nombre: "Niño"
-Categoria.create nombre: "Adulto"
-Categoria.create nombre: "Jubilado"
-Categoria.create nombre: "Anexo Grupo Familiar"
+if Categoria.count == 0
+  Categoria.create nombre: "Niño"
+  Categoria.create nombre: "Adulto"
+  Categoria.create nombre: "Jubilado"
+  Categoria.create nombre: "Anexo Grupo Familiar"
+end
 
-Rol::NOMBRES.each {|rol| Rol.create nombre: rol}
+if Rol.count == 0
+  Rol::NOMBRES.values.each {|rol| Rol.create nombre: rol}
+end
