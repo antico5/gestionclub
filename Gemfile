@@ -48,6 +48,7 @@ group :production do
 end
 
 gem "codeclimate-test-reporter", group: :test, require: nil
+gem "simplecov", :require => false, :group => :test
 
 gem 'simple_form'
 
