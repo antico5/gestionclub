@@ -9,6 +9,10 @@ class SociosController < ApplicationController
   def index
     @q = Socio.search(params[:q])
     @socios = @q.result
+    respond_to do |format|
+      format.html
+      format.js {render partial: "socios/socio_rows", locals: {socios: @socios}}
+    end
   end
 
   # GET /socios/1
