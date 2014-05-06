@@ -1,3 +1,5 @@
-PeriodosMailer#notify_liquidation
+Liquidado el mes de <%= @periodo.nombre %>
 
-<%= @greeting %>, find me in app/views/app/views/periodos_mailer/notify_liquidation.text.erb
+Deudas generadas: <%= @periodo.cantidad_deudas %>
+
+Responsable: <%= @usuario.email %>
