@@ -4,7 +4,7 @@ class Periodo < ActiveRecord::Base
   has_many :deudas
   has_many :categorias, through: :costo_por_categorias
 
-  accepts_nested_attributes_for :costo_por_categorias
+  accepts_nested_attributes_for :costo_por_categorias, allow_destroy: true
 
   before_create :init
 
@@ -19,6 +19,10 @@ class Periodo < ActiveRecord::Base
     Socio.activos.each do |socio|
       socio.generar_deuda self
     end
+  end
+
+  def cantidad_deudas
+    deudas.count
   end
 
 end
