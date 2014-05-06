@@ -5,6 +5,7 @@ class PeriodosController < InheritedResources::Base
   def generar_deuda
     @periodo = Periodo.find params[:id]
     @periodo.generar_deuda_a_socios_activos
+    PeriodosMailer.notify_liquidation(@periodo,current_user).deliver
     flash[:notice] = "Generadas deudas a socios para el periodo '"+@periodo.nombre+"'. Total generadas: "+ Deuda.where(periodo: @periodo).count.to_s
     redirect_to periodos_path
   end
