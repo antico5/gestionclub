@@ -1,0 +1,8 @@
+tr
+  td = socio.id
+  td = link_to socio.nombre, socio_path(socio)
+  td = yes_no_icon socio.activo
+  td = socio.categoria.nombre
+  td
+  	= link_to t('.edit', :default => t("helpers.links.edit")), edit_socio_path(socio), :class => 'btn btn-mini'
+  	= link_to t('.destroy', :default => t("helpers.links.destroy")), socio_path(socio), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
