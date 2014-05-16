@@ -1,0 +1,22 @@
+- model_class = Socio
+
+.page-header
+  h1 Gestion de socios</h1>
+
+= render partial: "search", locals: {url: socios_path}
+
+.digg_pagination.pagination
+  = will_paginate @socios, :container => false
+
+table#socios-table.table.table-striped
+  thead
+    tr
+      th= model_class.human_attribute_name(:id)
+      th= model_class.human_attribute_name(:nombre)
+      th= model_class.human_attribute_name(:activo)
+      th= model_class.human_attribute_name(:categoria_id)
+      th= t '.actions', :default => t("helpers.actions")
+  tbody
+    = render partial: "socio_rows", locals: {socios: @socios}
+hr
+= link_to "Nuevo", new_socio_path, class: 'btn btn-primary'
