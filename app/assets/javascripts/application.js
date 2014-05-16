@@ -16,3 +16,7 @@
 //= require turbolinks
 //= require_tree .
 
+function remotify_will_paginate() {
+    $('.pagination a').attr('data-remote', 'true');
+    return console.log("done");
+};
