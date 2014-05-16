@@ -1,6 +1,6 @@
 <%= search_form_for @q, url: url, remote: true, id: "socio-search" do |f| %>
   <div class="input-append">
-    <%= f.text_field :nombre_or_dni_cont %>
+    <%= f.text_field :nombre_or_dni_cont, id: "socio-search-field" %>
     <%= f.button class: "btn", remote: true do %>
       <i class="icon-search"></i>
     <% end %>
