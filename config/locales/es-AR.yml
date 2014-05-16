@@ -1,6 +1,9 @@
 # Corrected by Eloy Serra Labán: http://goo.gl/i9Kts, /nQ928, /XfKaX
 
 es-AR:
+  will_paginate:
+    previous_label: "Anterior"
+    next_label: "Siguiente"
   number:
     percentage:
       format:
