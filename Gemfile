@@ -62,6 +62,8 @@ gem 'devise'
 
 gem "ransack", github: "activerecord-hackery/ransack", branch: "rails-4"
 
+gem "will_paginate"
+
 gem "pundit"
 
 gem "slim"
