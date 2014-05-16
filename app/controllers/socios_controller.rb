@@ -8,10 +8,10 @@ class SociosController < ApplicationController
   # GET /socios.json
   def index
     @q = Socio.search(params[:q])
-    @socios = @q.result
+    @socios = @q.result.paginate page: params[:page], per_page: 5
     respond_to do |format|
       format.html
-      format.js {render partial: "socios/socio_rows", locals: {socios: @socios}}
+      format.js# {render partial: "socios/socio_rows", locals: {socios: @socios}}
     end
   end
 
